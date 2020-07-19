@@ -62,6 +62,7 @@ body > div {
 	margin-right: 0; 
 	margin-left: 0;
 	margin-bottom: 0;
+	margin-top: 0;
 /*	height: 40px;*/
 	background-color: #002147;
 	padding: 10px;
@@ -86,7 +87,7 @@ body > div {
 	color: black;
 	background-color: white;
 	padding: 10px;
-	margin-right:10px;
+	margin
 }
 
 /*.expandcontent {

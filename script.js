@@ -24,6 +24,7 @@ function changeModeTo(m) {
 	mode = m;
 	if (mode === 'quiz') {
 		hideElement(textarea); 
+		document.getElementById("content").style.fontSize = "25px"; 
 		// textarea.classList.add("hidetextbox"); 
 		// content.classList.add("expandcontent"); 
 	} else {
@@ -65,7 +66,11 @@ What kind of PDE is this?
 Let \( \Omega \subseteq \mathbb{R}^n \) be a domain. Then **Laplace's Equation** on \( \Omega \) is: 
 \[ \Delta u = 0 \] 
 What kind of PDE is this?
-</question-env> `; 
+</question-env> 
+
+<question-env>
+State and prove the **Dominated Convergence Theorem**. 
+</question-env>`; 
 	gabify(content, textarea.value); 
 	if (window.innerWidth < 760) {
 		changeModeTo("quiz"); 
