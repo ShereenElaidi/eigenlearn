@@ -23,19 +23,24 @@ customElements.define("question-env", class extends HTMLElement {
 function changeModeTo(m) {
 	mode = m;
 	if (mode === 'quiz') {
-		hideElement(textarea); 
+		// hideElement(textarea); 
 		document.getElementById("content").style.fontSize = "25px"; 
-		// textarea.classList.add("hidetextbox"); 
-		// content.classList.add("expandcontent"); 
+		document.getElementById("topbox").style.gridColumn= "span 3"; 	
+		textarea.classList.add("hidetextbox"); 
+		content.classList.add("expandcontent"); 
+		textarea.classList.add("topbox"); 
 	} else {
 		showElement(textarea); 
-		// textarea.classList.remove("hidetextbox"); 
-		// content.classList.remove("expandcontent"); 
+		document.getElementById("content").style.fontSize = "15px"; 
+		document.getElementById("topbox").style.gridColumn= "span 2"; 
+		textarea.classList.remove("hidetextbox"); 
+		content.classList.remove("expandcontent"); 
 	}
 }
 
 function init() {
 	renderMathInElement(document.querySelector("h1")); 
+	renderMathInElement(document.body) 
 	textarea = document.getElementById("code"); 
 	textarea.addEventListener("input", handleUserInput); 
 	content = document.getElementById("content");
@@ -93,12 +98,14 @@ function handleEditButton() {
 	mode = "edit"; 
 	postProcessHTML(); 
 	showElement(textarea); 
+	changeModeTo(mode); 
 }
 
 function handleViewButton() {
 	mode = "view"; 
 	postProcessHTML();
-	hideElement(textarea);  	
+	hideElement(textarea); 
+	changeModeTo(mode);  	
 }
 
 function handleUserInput() {

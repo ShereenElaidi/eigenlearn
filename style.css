@@ -56,14 +56,13 @@ body > div {
 } 
 
 .topbox {
-	grid-row-start:1 ;
+	grid-row-start:1;
 	grid-column-start: 1;
-	grid-column: span 2;
+	grid-column: span 3;
 	margin-right: 0; 
 	margin-left: 0;
 	margin-bottom: 0;
 	margin-top: 0;
-/*	height: 40px;*/
 	background-color: #002147;
 	padding: 10px;
 }
@@ -75,10 +74,11 @@ body > div {
 	margin-left: 10px;
 }
 
-/*.hidetextbox {
+.hidetextbox {
 	grid-row-start: 6; 
-/*	display: none;*/
-}*/
+	grid-row-end: 6;
+	display: none;
+}
 
 #content {
 	margin-top: 0;
@@ -86,19 +86,16 @@ body > div {
 	grid-row-end: 6;
 	color: black;
 	background-color: white;
+	font-size: 10px;
 	padding: 10px;
-	margin
 }
 
-/*.expandcontent {
+.expandcontent {
 	grid-column-start: 1; 
-	grid-column-end: 3;
-	grid-column: span 3;
+	grid-column: span 2;
+	grid-row-start: 2;
 }
 
-.hidecontent {
-
-}*/
 
 textarea {
 	width: 100%;
