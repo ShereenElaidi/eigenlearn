@@ -4,7 +4,7 @@ let nextQuestionButton;
 let previousQuestionButton; 
 let questionNumber = 0;
 let numQuestions = 0; 
-let mode = "edit"; 
+let mode; 
 let editButton; 
 let viewButton; 
 let quizButton; 
@@ -20,6 +20,19 @@ customElements.define("question-env", class extends HTMLElement {
    	}
 }); 
 
+function changeModeTo(m) {
+	mode = m;
+	if (mode === 'quiz') {
+		hideElement(textarea); 
+		// textarea.classList.add("hidetextbox"); 
+		// content.classList.add("expandcontent"); 
+	} else {
+		showElement(textarea); 
+		// textarea.classList.remove("hidetextbox"); 
+		// content.classList.remove("expandcontent"); 
+	}
+}
+
 function init() {
 	renderMathInElement(document.querySelector("h1")); 
 	textarea = document.getElementById("code"); 
@@ -30,39 +43,57 @@ function init() {
 	previousQuestionButton = document.getElementById("previous-question"); 
 	previousQuestionButton.addEventListener("click", handlePreviousQuestionButton); 
 	editButton = document.getElementById("edit"); 
-	editButton.addEventListener("click", () => {
-		mode = "edit"; 
-		postProcessHTML(); 
-	}); 
+	editButton.addEventListener("click", handleEditButton); 
 	viewButton = document.getElementById("view"); 
-	viewButton.addEventListener("click", () => {
-		mode = "view"; 
-		postProcessHTML(); 
-	}); 
+	viewButton.addEventListener("click", handleViewButton); 
 	quizButton = document.getElementById("quiz"); 
-	quizButton.addEventListener("click", () => {
-		mode = "quiz"; 
-		postProcessHTML(); 
-	});
+	quizButton.addEventListener("click", handleQuizButton);
 
 	textarea.value = String.raw`<question-env>
-Let \(\Omega \subseteq \mathbb{R}^n \) be a connected domain. The **wave equation** on \(\Omega \times [0, \infty[ \) is:
+Let \(\Omega \subseteq \mathbb{R}^n \) be a domain. The **wave equation** on \(\Omega \times [0, \infty[ \) is:
 \[u_{tt} - c^2\Delta u = 0.\]
 What kind of PDE is this? 
 </question-env>
 
 <question-env>
-Let \( \Omega \subseteq \mathbb{R}^n \) be a connected domain. The **heat equation** on \( \Omega \times [0, \infty[ \) is: 
+Let \( \Omega \subseteq \mathbb{R}^n \) be a domain. The **heat equation** on \( \Omega \times [0, \infty[ \) is: 
 \[u_t - c \Delta u = 0.\]
 What kind of PDE is this?
 </question-env>
 
 <question-env> 
-Let \( \Omega \subseteq \mathbb{R}^n \) be a connected domain. Then **Laplace's Equation** on \( \Omega \) is: 
+Let \( \Omega \subseteq \mathbb{R}^n \) be a domain. Then **Laplace's Equation** on \( \Omega \) is: 
 \[ \Delta u = 0 \] 
 What kind of PDE is this?
 </question-env> `; 
 	gabify(content, textarea.value); 
+	if (window.innerWidth < 760) {
+		changeModeTo("quiz"); 
+	} else {
+		changeModeTo("edit"); 
+	}
+}
+
+
+
+
+function handleQuizButton() {
+	mode = "quiz"; 
+	postProcessHTML(); 
+	hideElement(textarea); 
+	changeModeTo(mode); 
+}
+
+function handleEditButton() {
+	mode = "edit"; 
+	postProcessHTML(); 
+	showElement(textarea); 
+}
+
+function handleViewButton() {
+	mode = "view"; 
+	postProcessHTML();
+	hideElement(textarea);  	
 }
 
 function handleUserInput() {
@@ -75,12 +106,11 @@ function postProcessHTML() {
 	numQuestions = questionElements.length;  
 	for (let i = 0; i < questionElements.length; i++) {
 		if (i === questionNumber || mode !== "quiz") {
-			questionElements[i].style.display = "block"; 
+			showElement(questionElements[i]); 
 		} else {
-			questionElements[i].style.display = "none"; 
+			hideElement(questionElements[i]);
 		}
 	}
-
 }
 
 function handleNextQuestionButton() {
@@ -97,6 +127,13 @@ function handlePreviousQuestionButton() {
 	}
 }
 
+function hideElement(element) {
+	element.style.display = "none"; 
+}
+
+function showElement(element) {
+	element.style.display = "block"; 
+}
 
 
 window.onload = init; 
