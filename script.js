@@ -29,12 +29,18 @@ function changeModeTo(m) {
 		textarea.classList.add("hidetextbox"); 
 		content.classList.add("expandcontent"); 
 		textarea.classList.add("topbox"); 
-	} else {
-		showElement(textarea); 
+	} else if (mode === 'edit') {
+		// showElement(textarea); 
 		document.getElementById("content").style.fontSize = "15px"; 
 		document.getElementById("topbox").style.gridColumn= "span 2"; 
 		textarea.classList.remove("hidetextbox"); 
 		content.classList.remove("expandcontent"); 
+	} else {
+		// showElement(textarea); 
+		document.getElementById("content").style.fontSize = "18px"; 
+		document.getElementById("topbox").style.gridColumn= "span 2"; 
+		textarea.classList.add("hidetextbox"); 
+		content.classList.add("expandcontent"); 		
 	}
 }
 
