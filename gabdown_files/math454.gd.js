@@ -44,13 +44,13 @@ $$ \int_{[a,b]} fg' = f(b) g(b) - f(a) g(a) - \int_{[a,b]} f'g $$
 
 <question-env>
 **(Math 454, Assignment #2)**
-1. Prove that every closed set is a $G_\delta$ set and every open set is an $F_\sigma$ set. Hint: if $F \subseteq \mathbb{R}$ is closed, consider $O_n := \{ x \in \mathbb{R}\ |\ d(x, F) < 1/n \}$.
+1. Prove that every closed set is a $G_\delta$ set and every open set is an $F_\sigma$ set. Hint: if $F \subseteq \mathbb{R}$ is closed, consider $O_n := \\{ x \in \mathbb{R}\ |\ d(x, F) < 1/n \\}$.
 2. Prove that $\mathbb{Q}$ is an $F_\sigma$ set but not a $G_\delta$ set. Hint: You may argue by contradiction: assume that $\mathbb{Q}$ is both an $F_\sigma$ set and a $G_\delta$ set, then show that there exist open sets $(O_n)$ which are all dense in $\mathbb{R}$ whose intersection is empty, and finally derive a contradiction with a well-known property of $\mathbb{R}$.
 </question-env> 
 
 <question-env>
 **(Math 454, Assignment #6)**
-1. Prove that if $f$ is measurable on $\mathbb{R}^d$, then $(x,y) \mapsto f(x-y) $ is measurable on $\mathbb{R}^{2d}$. This is actually the hardest part of the question. Hint: it may be helpful to first write $\{ x \in \mathbb{R}^d\ |\ f(x) < c \}$ as the difference of a $G_\delta$ set and a set of measure $0$, and then show that this gives a similar decomposition for the set $\{ (x,y) \in \mathbb{R}^{2d}\ |\ f(x-y) < c \}$. 
+1. Prove that if $f$ is measurable on $\mathbb{R}^d$, then $(x,y) \mapsto f(x-y) $ is measurable on $\mathbb{R}^{2d}$. This is actually the hardest part of the question. Hint: it may be helpful to first write $\\{ x \in \mathbb{R}^d\ |\ f(x) < c \\}$ as the difference of a $G_\delta$ set and a set of measure $0$, and then show that this gives a similar decomposition for the set $\\{ (x,y) \in \mathbb{R}^{2d}\ |\ f(x-y) < c \\}$. 
 2. Prove that if $f$ and $g$ are integrable over $\mathbb{R}^d$, then $(x,y) \mapsto f(x-y)g(y)$ is integrable over $\mathbb{R}^{2d}$
 3. We define the convolution $f * g$ of $f$ and $g$ as: 
 $$ f * g(x) := \int_{\mathbb{R}^d} f(x-y) g(y) dy $$
@@ -75,7 +75,7 @@ with equality if $f$ and $g$ are non-negative.
 
 <question-env>
 **(Math 454, Assignment #3)**
-A function $f: \mathbb{R} \rightarrow \overline{\mathbb{R}}$ is said to be **Borel Measurable** provided its domain $A \subseteq \mathbb{R}$ is a Borel set and for each $c$, the set $\{ x \in A\ |\ f(x) < c \}$ is a Borel set. Prove that
+A function $f: \mathbb{R} \rightarrow \overline{\mathbb{R}}$ is said to be **Borel Measurable** provided its domain $A \subseteq \mathbb{R}$ is a Borel set and for each $c$, the set $\\{ x \in A\ |\ f(x) < c \\}$ is a Borel set. Prove that
 1. Every Borel measurable function is Lebesgue measurable. 
 2. If $f$ is Borel measurable and $B$ is a Borel set, then $f^{-1}(B)$ is a Borel set. 
 3. If $f$ and $g$ are Borel measurable, so is $f \circ g$.
@@ -97,13 +97,13 @@ $$ I_n := \int_{]0, \infty[} \frac{x^n}{1+x^{n+2}} dx $$
 **(Math 454, Assignment #1)**
 For every set $A \subseteq \mathbb{R}$, let $m_j^*(A)$ be defined as: 
 $$ m_j^*(A) := \inf \sum_{k=1}^n \ell(I_k) $$
-where the infimum is taken over all finite coverings of $A$ by open intervals $I_k$. The function $m_J^*$ is called the outer Jordan measure. 
+where the infimum is taken over all finite coverings of $A$ by open intervals $I_k$. The function $m_J^*$ is called the **outer Jordan measure**. 
 1. Prove that $m_j^*(A) = m_J^*(\overline{A})$ for all sets $A \subseteq \mathbb{R}$, where $\overline{A}$ denotes the closure of $A$. 
 2. Give an example of a countable set $A$ such that $m_J^*(A) = 1$. Compare with $m^*(A)$. 
 </question-env> 
 
 <question-env>
-**(Math 454, Assignment #3)** Let $(f_n)$ be a sequence of measurable functions defined on a measurable set $A \subseteq \mathbb{R}$. Let $A_0$ be the set of points $x$ in $A$ at which $(f_n(x))$ converges.
+**(Math 454, Assignment #3)** Let $(f_n)$ be a sequence of measurable functions defined on a measurable set $A \subseteq \mathbb{R}$. Let $A_0$ be the set of points $x$ in $A$ at which $(f_n(x))$ converges. Is $A_0$ measurable?
 </question-env> 
 
 <question-env> 
@@ -114,18 +114,18 @@ $$ \inf_{n \in \mathbb{N}} (f_n),\ \sup_{n \in \mathbb{N}} (f_n), \liminf_{n \ri
 
 <question-env>
 **(Math 454, Assignment #6)**
-Let $\Gamma \subseteq \mathbb{R}^d \times \mathbb{R}$, $\Gamma := \{ (x,y) \in \mathbb{R}^d \times \mathbb{R}\ |\ y = f(x) \}$, and assume that $f$ is measurable on $\mathbb{R}^d$. Prove that $\Gamma$ is a measurable subset of $\mathbb{R}^{d+1}$, and $m(\Gamma) = 0$.
+Let $\Gamma \subseteq \mathbb{R}^d \times \mathbb{R}$, $\Gamma := \\{ (x,y) \in \mathbb{R}^d \times \mathbb{R}\ |\ y = f(x) \\}$, and assume that $f$ is measurable on $\mathbb{R}^d$. Prove that $\Gamma$ is a measurable subset of $\mathbb{R}^{d+1}$, and $m(\Gamma) = 0$.
 </question-env> 
 
 <question-env> 
 **(Math 454, Assignment #1)**
-Let $A \subseteq \mathbb{R}$ and $O_n := \{ x \in \mathbb{R}\ |\ d(x,A) < 1/n \} $ for all $n \in \mathbb{N}$, where $d(x,A) := \inf \{ | x- y|\ |\ y \in A \} $
+Let $A \subseteq \mathbb{R}$ and $O_n := \\{ x \in \mathbb{R}\ |\ d(x,A) < 1/n \\} $ for all $n \in \mathbb{N}$, where $d(x,A) := \inf \\{ | x- y|\ |\ y \in A \\} $
 1. Prove that if $A$ is compact then $\lim_{n \rightarrow \infty} m(O_n) = m(A)$. 
 2. Prove that this is not necessarily true if $A$ is open and bounded. 
 </question-env> 
 
 <question-env>
-**(Math 454, Assignment #1)** Let $A \subseteq \mathbb{R}$ be measurable, $\alpha > 0$, $A_\alpha := \{ \alpha x\ |\ x \in A \}$ 
+**(Math 454, Assignment #1)** Let $A \subseteq \mathbb{R}$ be measurable, $\alpha > 0$, $A_\alpha := \\{ \alpha x\ |\ x \in A \\}$ 
   1. Prove that $m^*(A_\alpha) = \alpha m^*(A)$ 
   2. Prove that $A$ is measurable $\iff$ $A_\alpha$ is measurable.
 </question-env> 
@@ -133,13 +133,13 @@ Let $A \subseteq \mathbb{R}$ and $O_n := \{ x \in \mathbb{R}\ |\ d(x,A) < 1/n \}
 <question-env> 
 **(Math 454, Assignment #2)**
 Let $A \subseteq \mathbb{R}$ be measurable. Prove that
-$$ m(A) = \sup \{ m(K)\ |\ K \subseteq A, K \text{ compact} \}. $$
+$$ m(A) = \sup \\{ m(K)\ |\ K \subseteq A, K \text{ compact} \\}. $$
 This property is called the **inner regularity of Lebesgue measure**. Hint: You may first approximate $A$ by a closed set $F$ and then use the continuity of Lebesgue Measure.
 </question-env> 
 
 <question-env> 
 **(Math 454, Assignment #2)**
-Let $A$ and $B$ be two subsets of $\mathbb{R}$ and $A+B$ be the set defined by $A + B := \{ x+y\ |\ x  \in A, y \in B \}$. Prove that: 
+Let $A$ and $B$ be two subsets of $\mathbb{R}$ and $A+B$ be the set defined by $A + B := \\{ x+y\ |\ x  \in A, y \in B \\}$. Prove that: 
 1. If $A$ is closed and $B$ is compact, then $A+B$ is closed.
 2. If $A$ and $B$ are closed, then $A+B$ is measurable.
 Hint for Part (2): Prove that $A+B$ is an $F_\sigma$ set.
@@ -154,7 +154,7 @@ Let $A$ be a subset of $\mathbb{R}$ such that $m^*(A) < \infty$. Prove that:
 
 <question-env> 
 **(Math 454, Assignment #6)**
-Let $C_0(\mathbb{R}^d)$ be the set of all continuous functions $f: \mathbb{R}^d \rightarrow \mathbb{R}$ such that $\lim_{|x| \rightarrow \infty} f(x) = 0$, where $|x| := \sqrt{\sum_{i=1}^n x_i^2}$. 
+Let $C_0(\mathbb{R}^d)$ be the set of all continuous functions $f: \mathbb{R}^d \rightarrow \mathbb{R}$ such that $\lim_{||x|| \rightarrow \infty} f(x) = 0$, where $||x|| := \sqrt{\sum_{i=1}^n x_i^2}$. 
 1. Prove that if $f$ is uniformly continuous and integrable over $\mathbb{R}^d$, then $f \in C_0(\mathbb{R}^d)$. 
 2. Prove that if $f$ is bounded and uniformly continuous in 
 </question-env> 
@@ -207,7 +207,7 @@ Show that the continuity of measure together with finite additivity of measure i
 
 <question-env> 
 **(Math 454, Assignment #6)**
-Suppose $f$ is integrable over $\mathbb{R}^d$. For each $\alpha > 0$, let $E_\alpha := \{ x\ |\ |f(x)| > \alpha \}$. Prove that:
+Suppose $f$ is integrable over $\mathbb{R}^d$. For each $\alpha > 0$, let $E_\alpha := \\{ x\ |\ |f(x)| > \alpha \\}$. Prove that:
 $$
 \int_{\mathbb{R}^d} |f(x)| dx = \int_0^\infty m(E_\alpha) d \alpha 
 $$
@@ -215,7 +215,7 @@ $$
 
 <question-env> 
 **(Math 454, Assignment #5)**
-Suppose $f$ is measurable on $\mathbb{R}$, finite almost everywhere, $ f \geq 0$ and let $F_k := \{ x\ |\ 2^k < f(x) \leq 2^{k+1} \}$. Prove that
+Suppose $f$ is measurable on $\mathbb{R}$, finite almost everywhere, $ f \geq 0$ and let $F_k := \\{ x\ |\ 2^k < f(x) \leq 2^{k+1} \\}$. Prove that
 $$f \text{ is integrable on } \mathbb{R} \iff \sum_{k=-\infty}^{+\infty} 2^k m(F_k) < \infty $$
 Use this result to verify that
 $$ f(x) = \begin{cases} 
