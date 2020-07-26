@@ -55,9 +55,8 @@ function init() {
 	fetch("454.txt").then(r => r.text()).then(t => {
 		gabify(content, t); 
 		textarea.value = t; 
-	})
-	console.log(innerWidth);
-	if (window.innerWidth < 760) {
+	}) 
+	if ((document.documentElement.clientWidth/window.devicePixelRatio) < 500) {
 		changeModeTo("quiz"); 
 	} else {
 		changeModeTo("edit"); 
