@@ -27,7 +27,6 @@ function changeModeTo(m) {
 	document.body.classList.remove('quiz')	
 	if (mode === 'quiz') {	
 		document.body.classList.add("quiz"); 
-
 	} else if (mode === 'edit') {
 		document.body.classList.add("edit"); 
 	} else {
@@ -55,12 +54,14 @@ function init() {
 	fetch("454.txt").then(r => r.text()).then(t => {
 		gabify(content, t); 
 		textarea.value = t; 
+		if ((document.documentElement.clientWidth/window.devicePixelRatio) < 500) {
+			changeModeTo("quiz"); 
+			console.log("HELLO"); 
+			postProcessHTML(); 
+		} else {
+			changeModeTo("edit"); 
+		}
 	}) 
-	if ((document.documentElement.clientWidth/window.devicePixelRatio) < 500) {
-		changeModeTo("quiz"); 
-	} else {
-		changeModeTo("edit"); 
-	}
 }
 
 
