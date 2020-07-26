@@ -1,0 +1,17 @@
+<question-env>
+**(Math 454, Continuity Of Lebesgue Integration, Assignment #4)**
+1. Let \(f\) be integrable over \( A \subseteq \mathbb{R}\). By using the countable additivity of integration, prove that: 
+	1. If \( (A_n) \) is a sequence of measurable subsets of \( A \) such that \( A_n \subseteq A_{n+1} \) for all \( n \in \mathbb{N} \), then 
+	$$ \int_{\cup_{n=1}^\infty A_n} f = \lim_{n \rightarrow \infty} \int_{A_n} f $$
+	2. If \( (A_n) \) is a sequence of measurable subsets of \( A \) such that \( A_{n+1} \subseteq A_n \)  for all \( n \in \mathbb{N} \), then 
+	$$ \int_{\cap_{n=1}^\infty A_n} f = \lim_{n \rightarrow \infty} \int_{A_n} f $$
+2. Prove that if \( f \) is integrable over \( \mathbb{R} \), then \( F(x) = \int_{]-\infty, x[} f \) is continuous on \( \mathbb{R} \) and satisfies \( \lim_{x \rightarrow - \infty} F(x) = 0 \) and \( \lim_{ x \rightarrow + \infty} F(x) = \int_\mathbb{R} f \).
+3. Let \( f(x) = \frac{ \sin(x) }{x} \) for all \( x \in [ \pi, \infty[ \). Prove that \( \lim_{n \rightarrow \infty} \int_{[\pi, n \pi]} f \) exists, while \( f \) is not integrable over \( [\pi, \infty[ \). 
+</question-env>
+
+<question-env>
+**(Math 454, Assignment #4)**
+1. Let $ (f_n)_{n \in \mathbb{N}} $ be a sequence of nonnegative measurable functions over $ A \subseteq \mathbb{R} $. Prove that if $ f_1 $ is integrable over $A$ and $f_{n+1} < f_n$ $\forall n \in \mathbb{N}$, then:
+$$\lim_{n \rightarrow \infty} \int_A f_n = \int_A \lim_{n \rightarrow \infty} f_n $$
+2. Show by providing a counter-example that this assertion is not true in general when $f_1$ is not integrable over $A$.
+</question-env> 
