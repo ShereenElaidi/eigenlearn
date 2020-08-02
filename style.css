@@ -2,23 +2,19 @@
 	--margin-size: min(100px, 7.5vw);
 }
 
-html {
+html, body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	overflow-y: hidden;
 }
 
 body {
-	font-family: "Computer Modern Serif", serif;
-	min-height: 100%; 
-	margin: 0; 
-	padding: 0;
 	display: grid; 
 	grid-gap: 10px;
-	height: 100%;
 	background-color: white;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: fit-content(0) 1fr; 
+	grid-template-rows: auto 1fr; 
 	grid-auto-flow: dense; 
 }
 
@@ -74,27 +70,44 @@ button {
 	font-weight: bold;
 	font-size: 20px;
 	margin-bottom: 0;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: #79ccd3;
+	padding-left: 2ch;
+	padding-right: 2ch;
 }
 
-h1 {
-	font-size: 60px;
-	padding: 0px;
-	margin: 0; 
+button:hover {
 	color: white;
 }
 
+
+#button-container {
+	display: flex;
+	align-items: center;
+}
+
+
+#title {
+	color: #ffc900;
+	font-size: 3em;
+	font-family: "Computer Modern Serif", serif;
+	font-weight: bold;
+	padding-left: 1ch;
+	padding-top: 0em;
+	padding-bottom: 0em;
+	text-align: center;
+}
 
 body > div { 
 	background-color: white;
 } 
 
-#topbox {
-	margin-right: 0; 
-	margin-left: 0;
-	margin-bottom: 0;
-	margin-top: 0;
+header {
+	display: flex;
+	justify-content: space-between;
 	background-color: #002147;
-	padding: 10px;
 	grid-area: h; 
 }
 
@@ -102,24 +115,26 @@ body > div {
 	margin-top: 0;
 	margin-left: 10px;
 	grid-area: c;
+	outline: none;
 }
 
 
 #content {
-/*	margin-top: 0;*/
+	font-family: "Computer Modern Serif", serif;
 	background-color: white;
 	color: black;
-/*	font-size: 10px;*/
 	padding: 10px;
 	grid-area: q;
 	overflow-y: scroll; 
 }
 
+/* this is a comment */
 
 textarea {
 	width: 100%;
-/*	resize: none;*/
 	border: none;
+	outline: none;
+	resize: none;
 }
 
 

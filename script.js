@@ -4,10 +4,15 @@ let nextQuestionButton;
 let previousQuestionButton; 
 let questionNumber = 0;
 let numQuestions = 0; 
-let mode; 
+// let mode; 
 let editButton; 
 let viewButton; 
 let quizButton; 
+let state = new Map();
+state.set("mode", ""); 
+state.set("numQuestions", 0); 
+state.set("questionNumber", 0); 
+state.set("userHasEdited", false);
 
 
 customElements.define("question-env", class extends HTMLElement {
@@ -21,21 +26,13 @@ customElements.define("question-env", class extends HTMLElement {
 }); 
 
 function changeModeTo(m) {
-	mode = m;
-	document.body.classList.remove("edit"); 
-	document.body.classList.remove('view');
-	document.body.classList.remove('quiz')	
-	if (mode === 'quiz') {	
-		document.body.classList.add("quiz"); 
-	} else if (mode === 'edit') {
-		document.body.classList.add("edit"); 
-	} else {
-		document.body.classList.add('view'); 		
-	}
+	// mode = m;
+	state.set("mode", m); 
+	document.body.className = state.get("mode"); 
 }
 
 function init() {
-	renderMathInElement(document.querySelector("h1")); 
+	renderMathInElement(document.getElementById("title")); 
 	renderMathInElement(document.body) 
 	textarea = document.getElementById("code"); 
 	textarea.addEventListener("input", handleUserInput); 
@@ -50,7 +47,6 @@ function init() {
 	viewButton.addEventListener("click", handleViewButton); 
 	quizButton = document.getElementById("quiz"); 
 	quizButton.addEventListener("click", handleQuizButton);
-
 	fetch("454.txt").then(r => r.text()).then(t => {
 		gabify(content, t); 
 		textarea.value = t; 
@@ -62,62 +58,63 @@ function init() {
 			changeModeTo("edit"); 
 		}
 	}) 
+	window.setInterval(() => {
+		if (state.get("userHasEdited")) {
+			gabify(content, textarea.value); 
+			postProcessHTML(); 
+			state.set("userHasEdited", false); 
+		}
+	}, 1000); 
 }
 
 
 
 function handleQuizButton() {
-	mode = "quiz"; 
+	changeModeTo("quiz"); 
 	postProcessHTML(); 
-	hideElement(textarea); 
-	changeModeTo(mode); 
+	hideElement(textarea);  
 }
 
 function handleEditButton() {
-	mode = "edit"; 
+	changeModeTo("edit"); 
 	postProcessHTML(); 
 	showElement(textarea); 
-	changeModeTo(mode); 
 }
 
 function handleViewButton() {
-	mode = "view"; 
+	changeModeTo("view"); 
 	postProcessHTML();
-	hideElement(textarea); 
-	changeModeTo(mode);  	
+	hideElement(textarea); 	
 }
 
 function handleUserInput() {
-	gabify(content, textarea.value); 
-	postProcessHTML(); 
+	state.set("userHasEdited", true); 
+	// gabify(content, textarea.value); 
+	// postProcessHTML(); 
 }
 
 function postProcessHTML() {
 	let questionElements = document.querySelectorAll("question-env");
-	numQuestions = questionElements.length;  
-	console.log(numQuestions);
-	for (let i = 0; i < questionElements.length; i++) {
-		if (i === questionNumber || mode !== "quiz") {
-			console.log("Question No" + i); 
+	state.set("numQuestions", questionElements.length); 
+	for (let i = 0; i < state.get("numQuestions"); i++) {
+		if (i === state.get("questionNumber") || state.get("mode") !== "quiz") {
 			showElement(questionElements[i]); 
-			console.log(questionElements[i]); 
 		} else {
-			console.log("I had better not see this message"); 
 			hideElement(questionElements[i]);
 		}
 	}
 }
 
 function handleNextQuestionButton() {
-	if (questionNumber < numQuestions - 1) {
-		questionNumber++; 
+	if (state.get("questionNumber") < state.get("numQuestions") - 1) {
+		state.set("questionNumber", state.get("questionNumber")+1); 
 		postProcessHTML(); 
 	}
 }
 
 function handlePreviousQuestionButton() {
-	if (questionNumber > 0) {
-		questionNumber--; 
+	if (state.get("questionNumber") > 0) {
+		state.set("questionNumber", state.get("questionNumber")-1); 
 		postProcessHTML(); 
 	}
 }
@@ -129,6 +126,9 @@ function hideElement(element) {
 function showElement(element) {
 	element.style.display = "block"; 
 }
+
+
+
 
 window.onload = init; 
 
