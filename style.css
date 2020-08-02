@@ -33,9 +33,17 @@ body {
 	padding-right: 40px;
 }
 
+.view #previous-question, .view #next-question {
+	display: none;
+}
+
 .edit {
 	grid-template-areas: "h h" 
 						 "c q" 
+}
+
+.edit #previous-question, .edit #next-question {
+	display: none;
 }
 
 
@@ -80,6 +88,11 @@ button {
 
 button:hover {
 	color: white;
+}
+
+.view #view, .edit #edit, .quiz #quiz {
+	/* McGill red */
+	color: #ed1b2f;
 }
 
 
